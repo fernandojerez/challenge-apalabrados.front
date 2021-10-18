@@ -26,7 +26,9 @@ export const InputClassification: FC<InputClassificationProps> = ({
       .then((response) => response.json())
       .then((json) => {
         history.push("/result");
-        onClassification(json as Classification);
+        const classification = json as Classification;
+        classification.input = text;
+        onClassification(classification);
       });
   };
   return (
